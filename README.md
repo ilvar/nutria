@@ -8,3 +8,5 @@ git clone git@github.com:ilvar/nutria.git
 cd nutria
 meteor
 ```
+
+or visit http://nutria.ilvar.ru
