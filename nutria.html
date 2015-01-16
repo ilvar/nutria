@@ -1,0 +1,88 @@
+<head>
+    <title>Nutria: helps you with the nutrition</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.1/sandstone/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="icon" type="image/png" href="1421374232_creep-008.png">
+
+    <meta property="og:title" content="Nutria: helps you with the nutrition" />
+    <meta property="og:url" content="http://nutria.meteor.com/" />
+    <meta property="og:image" content="vegetables-498842_640.jpg" />
+
+    <style>
+        a.navbar-brand img {
+            margin-top: -16px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="1421374232_creep-008.png" />
+                </a>
+                <a class="navbar-brand" href="#">
+                    <b>Nutria</b> helps you with the nutrition
+                </a>
+            </div>
+            {{> search}}
+        </div>
+    </nav>
+
+    <div class="container">
+        {{> data}}
+    </div>
+</body>
+
+<template name="search">
+    <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" value="{{search}}">
+        </div>
+    </form>
+</template>
+
+<template name="data">
+    {{#if loaded}}
+        {{#if products_not_exist}}
+            {{> upload}}
+        {{else}}
+            {{> products}}
+        {{/if}}
+    {{/if}}
+</template>
+
+<template name="upload">
+    <form class="upload">
+        <div class="form-group">
+            <label for="nutrientsFile">CSV upload</label>
+            <input type="file" id="nutrientsFile">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</template>
+
+<template name="products">
+    {{#if search}}
+        {{#each products}}
+            {{> item}}
+        {{/each}}
+    {{else}}
+        <p>Search for a product in a field above</p>
+    {{/if}}
+</template>
+
+<template name="item">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{Shrt_Desc}} <span class="badge">Category: {{Category}}</span></div>
+        <div class="panel-body">
+            {{#each properties}}
+                {{name}}: <b>{{value}}</b>
+            {{/each}}
+        </div>
+    </div>
+</template>
