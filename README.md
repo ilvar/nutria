@@ -6,6 +6,8 @@ All data is taken from [SR2 database](http://www.ars.usda.gov/News/docs.htm?doci
 
 ## Running
 
-> git clone git@github.com:ilvar/nutria.git
-> cd nutria
-> meteor
+```
+git clone git@github.com:ilvar/nutria.git
+cd nutria
+meteor
+```
