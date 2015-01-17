@@ -1,0 +1,1 @@
+Server-only code, see http://docs.meteor.com/#/full/structuringyourapp
