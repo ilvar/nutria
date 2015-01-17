@@ -5,9 +5,10 @@
 
     <title>Nutria: helps you with the nutrition</title>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.1/sandstone/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.1/sandstone/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Finger+Paint" id="link-webfont" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="1421374232_creep-008.png">
@@ -57,6 +58,13 @@
             <ul class="nav navbar-nav">
                 {{> navmenu}}
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="http://ilvar.github.io/nutria/">
+                        <i class="fa fa-github"></i> Source code
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -90,7 +98,9 @@
             <ul class="nav nav-pills nav-stacked">
                 {{#each categories}}
                     <li role="presentation">
-                        <a href="#" data-cat="{{Category}}" class="select-cat">Category: {{Cluster.descriptionString}}</a>
+                        <a href="#" data-cat="{{Category}}" class="select-cat">
+                            {{Category}}: {{Cluster.descriptionString}}
+                        </a>
                     </li>
                 {{/each}}
             </ul>
@@ -108,9 +118,8 @@
     <form role="search" class="search">
         <div class="form-group">
             <div class="input-group">
-                <input type="search" class="form-control" placeholder="Search" value="{{search}}"
-                       aria-describedby="search-icon">
-                <span class="input-group-addon" id="search-icon"><span class="glyphicon glyphicon-search"></span></span>
+                <input type="search" class="form-control" placeholder="Search" value="{{search}}" aria-describedby="search-icon">
+                <span class="input-group-addon" id="search-icon"><i class="fa fa-search"></i></span>
             </div>
         </div>
     </form>
