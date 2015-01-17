@@ -1,17 +1,32 @@
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Nutria: helps you with the nutrition</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.1/sandstone/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.1/sandstone/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Finger+Paint" id="link-webfont" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="1421374232_creep-008.png">
 
-    <meta property="og:title" content="Nutria: helps you with the nutrition" />
-    <meta property="og:url" content="http://nutria.meteor.com/" />
-    <meta property="og:image" content="vegetables-498842_640.jpg" />
+    <meta property="og:title" content="Nutria: helps you with the nutrition"/>
+    <meta property="og:url" content="http://nutria.meteor.com/"/>
+    <meta property="og:image" content="vegetables-498842_640.jpg"/>
 
     <style>
         a.navbar-brand img {
             margin-top: -16px;
+        }
+
+        p.navbar-brand {
+            margin-bottom: 0;
+        }
+
+        #words_cloud_label {
+            font-family: Finger Paint;
         }
     </style>
 
@@ -19,39 +34,84 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img alt="Brand" src="1421374232_creep-008.png" />
-                </a>
-                <a class="navbar-brand" href="#">
-                    <b>Nutria</b> helps you with the nutrition
-                </a>
-            </div>
-            {{> search}}
-        </div>
-    </nav>
-
+<nav class="navbar navbar-inverse">
     <div class="container">
-        {{> data}}
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-links">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="1421374232_creep-008.png"/>
+            </a>
+            <a class="navbar-brand" href="#"><b>Nutria</b></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-links">
+            <p class="navbar-brand">helps you with the nutrition</p>
+            <ul class="nav navbar-nav">
+                {{> navmenu}}
+            </ul>
+        </div>
     </div>
+</nav>
+
+<div class="container">
+    {{> data}}
+</div>
 </body>
 
-<template name="search">
-    <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" value="{{search}}">
-        </div>
-    </form>
+<template name="navmenu">
+    {{#if section_products}}
+        <li class="active" id="menu_products"><a href="#">Products <span class="sr-only">(current)</span></a></li>
+        <li><a href="#" id="menu_cats">Categories</a></li>
+    {{else}}
+        <li><a href="#" id="menu_products">Products</a></li>
+        <li class="active"><a href="#" id="menu_cats">Categories <span class="sr-only">(current)</span></a></li>
+    {{/if}}
 </template>
 
 <template name="data">
-    {{> products}}
+    {{#if section_products}}
+        {{> products}}
+    {{else}}
+        {{> categories}}
+    {{/if}}
+</template>
+
+<template name="categories">
+    <div class="row">
+        <div class="col-md-4 col-lg-3">
+            <ul class="nav nav-pills nav-stacked">
+                {{#each categories}}
+                    <li role="presentation">
+                        <a href="#" data-cat="{{Category}}" class="select-cat">Category: {{Category}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-md-8 col-lg-9">
+            <div class="tab-content">
+                <canvas id="words_cloud" width="848" height="400"></canvas>
+                <p id="words_cloud_label" class="animated fadeOut">Loading...</p>
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name="products">
-    {{#if search}}
+    <form role="search" class="search">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Search" value="{{search}}"
+                       aria-describedby="search-icon">
+                <span class="input-group-addon" id="search-icon"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </form>
+
+    {{#if search_ok}}
         {{#each products}}
             {{> item}}
         {{/each}}
@@ -61,11 +121,11 @@
 </template>
 
 <template name="item">
-    <div class="panel panel-default">
+    <div class="panel panel-default animated fadeInUp">
         <div class="panel-heading">{{Shrt_Desc}} <span class="badge">Category: {{Category}}</span></div>
         <div class="panel-body">
             {{#each properties}}
-                {{name}}: <b>{{value}}</b>
+            {{name}}: <b>{{value}}</b>
             {{/each}}
         </div>
     </div>
