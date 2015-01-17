@@ -47,23 +47,7 @@
 </template>
 
 <template name="data">
-    {{#if loaded}}
-        {{#if products_not_exist}}
-            {{> upload}}
-        {{else}}
-            {{> products}}
-        {{/if}}
-    {{/if}}
-</template>
-
-<template name="upload">
-    <form class="upload">
-        <div class="form-group">
-            <label for="nutrientsFile">CSV upload</label>
-            <input type="file" id="nutrientsFile">
-        </div>
-        <button type="submit" class="btn btn-primary">Upload</button>
-    </form>
+    {{> products}}
 </template>
 
 <template name="products">
