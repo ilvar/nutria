@@ -18,14 +18,4 @@ Meteor.startup(function () {
 
         console.log('Loaded ' + Categories.find().count() + ' categories');
     }
-
-    if (ClusterCenter.find().count() == 0) {
-        console.log('Loading cluster centers to the collection...');
-
-        _.each(JSON.parse(Assets.getText('cluster_centers.json')), function (cluster_center) {
-            ClusterCenter.insert(cluster_center);
-        });
-
-        console.log('Loaded ' + ClusterCenter.find().count() + ' cluster centers');
-    }
 });

@@ -90,7 +90,7 @@
             <ul class="nav nav-pills nav-stacked">
                 {{#each categories}}
                     <li role="presentation">
-                        <a href="#" data-cat="{{Category}}" class="select-cat">Category: {{Category}}</a>
+                        <a href="#" data-cat="{{Category}}" class="select-cat">Category: {{Cluster.descriptionString}}</a>
                     </li>
                 {{/each}}
             </ul>
@@ -129,7 +129,7 @@
         <div class="panel-heading">{{Shrt_Desc}} <span class="badge">Category: {{Category}}</span></div>
         <div class="panel-body">
             {{#each properties}}
-            {{name}}: <b>{{value}}</b>
+                {{name}}: <b>{{value}}</b>
             {{/each}}
         </div>
     </div>
