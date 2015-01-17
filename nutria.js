@@ -24,7 +24,7 @@ if (Meteor.isClient) {
         products: function () {
             var search = Session.get("search");
             if (search && search.length > 1) {
-                return Products.find({"Shrt_Desc": {$regex: search, $options: 'i'}});
+                return Products.find({"Shrt_Desc": {$regex: search, $options: 'i'}}, {limit: 50});
             } else {
                 return []
             }
