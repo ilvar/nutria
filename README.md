@@ -8,7 +8,7 @@ git clone git@github.com:ilvar/nutria.git
 cd nutria
 virtualenv ENV
 source ./ENV/bin/activate
-pip install openpyxl scikit-learn
+pip install openpyxl numpy scikit-learn
 python clusterize.py
 meteor
 ```
