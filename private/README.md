@@ -1,0 +1,1 @@
+Private files, see http://docs.meteor.com/#/full/structuringyourapp
