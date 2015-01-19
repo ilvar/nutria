@@ -17,25 +17,6 @@
     <meta property="og:url" content="http://nutria.meteor.com/"/>
     <meta property="og:image" content="http://nutria.meteor.com/vegetables-498842_640.jpg"/>
 
-    <style>
-        a.navbar-brand img {
-            margin-top: -16px;
-        }
-
-        p.navbar-brand {
-            margin-bottom: 0;
-        }
-
-        #words_cloud_label {
-            font-family: Finger Paint;
-        }
-
-        body {
-            padding-top: 75px;
-        }
-    </style>
-
-
 </head>
 
 <body>
@@ -54,7 +35,7 @@
             <a class="navbar-brand" href="#"><b>Nutria</b></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-links">
-            <p class="navbar-brand">helps you with the nutrition</p>
+            <p class="navbar-text">helps you with the nutrition</p>
             <ul class="nav navbar-nav">
                 {{> navmenu}}
             </ul>
@@ -93,24 +74,14 @@
 </template>
 
 <template name="categories">
-    <div class="row">
-        <div class="col-md-4 col-lg-3">
-            <ul class="nav nav-pills nav-stacked">
-                {{#each categories}}
-                    <li role="presentation">
-                        <a href="#" data-cat="{{Category}}" class="select-cat">
-                            {{Category}}: {{Cluster.descriptionString}}
-                        </a>
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
-        <div class="col-md-8 col-lg-9">
-            <div class="tab-content">
-                <canvas id="words_cloud" width="848" height="400"></canvas>
-                <p id="words_cloud_label" class="animated fadeOut">Loading...</p>
-            </div>
-        </div>
+    {{#each categories}}
+        <a href="#" data-cat="{{Category}}" class="select-cat btn btn-link">
+            {{Category}}: {{Cluster.descriptionString}}
+        </a>
+    {{/each}}
+    <div>
+        <canvas id="words_cloud" width="1170" height="500"></canvas>
+        <p id="words_cloud_label" class="animated fadeOut">Loading...</p>
     </div>
 </template>
 
@@ -135,11 +106,13 @@
 
 <template name="item">
     <div class="panel panel-default animated fadeInUp">
-        <div class="panel-heading">{{Shrt_Desc}} <span class="badge">Category: {{Category}}</span></div>
+        <div class="panel-heading">{{Description}} <span class="badge">Category: {{Category}}</span></div>
         <div class="panel-body">
-            {{#each properties}}
-                {{name}}: <b>{{value}}</b>
-            {{/each}}
+            <dl class="dl-horizontal nutria-facts">
+                {{#each properties}}
+                    <dt>{{name}}</dt> <dd>{{value}}</dd>
+                {{/each}}
+            </dl>
         </div>
     </div>
 </template>

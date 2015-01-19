@@ -1,1 +1,55 @@
-/* CSS declarations go here */
+a.navbar-brand img {
+    margin-top: -16px;
+}
+
+p.navbar-text {
+    color: white !important;
+}
+
+#words_cloud_label {
+    font-family: Finger Paint;
+}
+
+#words_cloud {
+    max-width: 100% !important;
+}
+
+.panel .panel-heading {
+    text-transform: none !important;
+    font-size: 13px !important;
+}
+
+dl.nutria-facts {
+    -webkit-column-gap: 10px;
+    -moz-column-gap: 10px;
+    column-gap:10px;
+    margin-bottom: 0;
+}
+
+@media (min-width: 320px) {
+    dl.nutria-facts {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count:2;
+    }
+}
+
+@media (min-width: 768px) {
+    dl.nutria-facts {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count:3;
+    }
+}
+
+@media (min-width: 1200px) {
+    dl.nutria-facts {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count:4;
+    }
+}
+
+body {
+    padding-top: 75px;
+}

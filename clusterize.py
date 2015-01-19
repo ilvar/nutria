@@ -30,7 +30,11 @@ print 'Writing products'
 json_data = [dict(zip(captions, row)) for row in all_data]
 
 for jd, cat in zip(json_data, data):
-    jd.update({"Category": cat})
+    description = ', '.join(jd['Shrt_Desc'].lower().split(','))
+    jd.update({
+        'Description': description.capitalize(),
+        'Category': cat
+    })
 
 json.dump(json_data, open(os.path.join('private', 'products.json'), 'w'))
 
