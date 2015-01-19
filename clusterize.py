@@ -45,6 +45,11 @@ for jd, cat in zip(json_data, data):
         cats[cat] = {}
 
     for bit in bits:
+        if len(bit) <= 3:
+            continue
+
+        bit = bit.capitalize()
+
         if bit not in cats[cat]:
             cats[cat][bit] = 0
 
@@ -55,10 +60,14 @@ cat_words = []
 cluster_centers = [dict(zip(params_captions, c)) for c in cluster.cluster_centers_]
 
 for cat, cat_data in cats.items():
-    words = list(cat_data.items())
+    words = list(map(list, cat_data.items()))
     words.sort(key=lambda v: v[1])
     words.reverse()
     words = words[:20]
+
+    sizes = [36, 24, 18, 12, 12, 8, 8, 8, 6, 6, 6, 6, 4, 4, 4, 4, 4, 4, 4, 4]
+    for i, w in enumerate(words):
+        w[1] = sizes[i]
 
     current_center = cluster_centers[cat]
     cluster_description = []
